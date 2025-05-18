@@ -71,7 +71,7 @@ public class BatchJobSubmitter implements RequestHandler<S3Event, Boolean> {
 					// Define environment variables to pass to the container
 					List<KeyValuePair> environmentVariables = Arrays.asList(
 							KeyValuePair.builder().name("bucket_name").value(bucketName).build(),
-							KeyValuePair.builder().name("object_key").value(bucketName).build()
+							KeyValuePair.builder().name("object_key").value(objectKey).build()
 					);
 	                
 	                // Override container settings to include environment variables and resource requirements
