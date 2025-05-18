@@ -63,7 +63,7 @@ public class BatchJobSubmitter implements RequestHandler<S3Event, Boolean> {
         		try {
         		
 	        		BatchClient batchClient = BatchClient.builder()
-	                        .region(Region.of(System.getenv("AWS_REGION")))
+	                        .region(Region.of(System.getenv("MEM_AWS_REGION")))
 	                        .build();
 	        		
 	        		String jobName = "fargate-job-" + System.currentTimeMillis();
@@ -81,8 +81,8 @@ public class BatchJobSubmitter implements RequestHandler<S3Event, Boolean> {
 	        		
 	        		SubmitJobRequest submitJobRequest = SubmitJobRequest.builder()
 	                        .jobName(jobName)
-	                        .jobQueue(System.getenv("JOB_QUEUE_NM"))
-	                        .jobDefinition(System.getenv("JOB_DEF_NM"))
+	                        .jobQueue(System.getenv("MEM_JOB_QUEUE_NM"))
+	                        .jobDefinition(System.getenv("MEM_JOB_DEF_NM"))
 	                        .containerOverrides(containerOverrides)
 	                        .build();
 	        		
